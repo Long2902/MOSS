@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y \
 RUN python3 -m venv venv
 RUN /bin/bash -c "source venv/bin/activate && pip install --upgrade pip && pip install -r requirements_dev.txt"
 
+# Install remaining dependencies
+RUN make install
+
 # Khởi động MySQL và thay đổi mật khẩu root
 RUN service mysql start && mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY '';FLUSH PRIVILEGES;"
 
