@@ -22,7 +22,9 @@ MAIN          := manage.py
 install:
 	sudo apt-get -y update
 	sudo apt-get -y install redis mysql-server libmysqlclient-dev python3-pip
-	pip install -r requirements_dev.txt --upgrade 
+	python3 -m venv venv
+	source venv/bin/activate && pip install --upgrade pip && pip install -r requirements_dev.txt --upgrade
+	# pip install -r requirements_dev.txt --upgrade 
 	#--break-system-packages
 	$(MAKE) db
 
