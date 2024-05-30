@@ -1,0 +1,4 @@
+examples/*
+ignore/*
+media/*
+htmlcov/*

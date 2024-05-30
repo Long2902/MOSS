@@ -1,0 +1,13 @@
+django==4.0.3
+python-dotenv
+requests
+whitenoise
+celery==5.2.3
+redis
+pymysql[rsa]
+asyncio
+aiohttp
+coverage
+lxml
+bs4
+flake8

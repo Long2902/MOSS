@@ -1,0 +1,49 @@
+drop-zone > #zone
+{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-color: var(--bs-gray-500);
+    border-radius: 20px;
+    border-width: 1px;
+    border-style: dashed;
+    height: 150px;
+    width: 100%;
+}
+drop-zone > #zone > #zone-icon
+{
+    position: absolute;
+    height: 85px;
+    width: 85px;
+    top: 15px;
+    /*content: url("/static/img/upload.svg");*/
+}
+drop-zone > #zone > #zone-text
+{
+    position: absolute;
+    color: var(--bs-dark);
+    bottom: 20px;
+}
+/*drop-zone > #zone > #zone-info
+{
+    position: absolute;
+    height: 17px;
+    width: 17x;
+    top: 10px;
+    right: 10px;
+    content: url("/static/img/info.svg");
+}*/
+drop-zone > #zone > #zone-input
+{
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+drop-zone > #file-list
+{
+    max-height: 137px;
+    overflow: auto;
+    overflow-x: hidden;
+}

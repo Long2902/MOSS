@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block "base-content" %}
+
+<!-- Page Area -->
+<div class="d-flex flex-column bg-light" style="min-height: 100vh">
+	<!-- Navbar -->
+	<nav class="navbar navbar-dark bg-dark shadow">
+		<div class="container-fluid px-5 py-1">
+			<a class="navbar-brand animate__animated animate__fadeIn animate__fast" href="{% url "jobs:index" %}">
+				<img src="{% static "/img/automoss.svg" %}" height=40>
+			</a>
+			
+			<div class="d-flex">
+				<div id="ping" class="d-flex align-items-center me-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Status">
+					<label class="text-light">MOSS Status:</label>
+					<svg class="button" expanded="true" height="40px" width="40px">
+          				<circle id="ping-inner" cx="50%" cy="50%" r="10px"></circle>
+          				<circle id="ping-outer" class="ping" cx="50%" cy="50%" r="20px"></circle>
+        			</svg>
+				</div>
+				
+				<!-- Dropdown Menu -->
+				<div class="dropdown">
+					<a class="btn btn-outline-info rounded-pill border-2 mx-2 dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+						<svg class="mb-1 me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+							<path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+						</svg>
+						<span>{{ user }}</span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+					<li><a class="dropdown-item text-light" href="{% url 'users:profile' %}">
+						<svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="2 2 16 16">
+								<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+							</svg>  
+						Profile</a></li>
+					<li><a class="dropdown-item text-light" href="{% static "doc/user-manual.pdf" %}" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" fill="currentColor" class="bi bi-info-circle-fill" viewBox="2 0 20 20">
+							<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+						</svg>
+						Help</a></li>
+					<li><a class="dropdown-item text-light" href="{% url 'users:logout' %}">
+						<svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+							<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+						</svg>
+						Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Content Area -->
+	<div id="main-content" class="container-fluid flex-grow-1 py-4 px-5 bg-light" >
+		{% block "main-content" %}{% endblock %}
+	</div>
+	
+	<!-- Page Footer -->
+	<footer class="py-3 m-0 shadow-lg bg-dark text-center">
+		<label class="animate__animated animate__fadeIn animate__fast text-white">Copyright © 2021 <span class="text-secondary">AutoMOSS</span>. All Rights Reserved.</label>
+	</footer>
+
+</div>
+
+<script ignoreOnExtract>
+
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+	var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl){
+		return new bootstrap.Tooltip(tooltipTriggerEl);
+	});
+
+	let pingElement = document.getElementById("ping");
+	let pingInner = document.getElementById("ping-inner");
+	let pingOuter = document.getElementById("ping-outer");
+	let statusMapping = {
+		1: ["Online", "var(--bs-success)"],
+		2: ["Under Load", "var(--bs-yellow)"],
+		3: ["Under Severe Load", "var(--bs-warning)"],
+		4: ["Offline", "var(--bs-danger)"]
+	};
+
+	function setStatus(status, ping){
+		pingElement.setAttribute("data-bs-original-title", statusMapping[status][0]);
+		pingInner.style.fill = pingOuter.style.fill = statusMapping[status][1];
+	}
+
+	async function updateStatus(){
+		let status = await fetch("{% url "api:moss:get_status" %}");
+		let data = await status.json();
+		setStatus(data.status, data.average_ping);
+	}
+	setInterval(updateStatus, 30000);
+	updateStatus();
+
+</script>
+
+{% endblock %}

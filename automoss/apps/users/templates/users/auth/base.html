@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block "base-content" %}
+
+	<style>
+		body{
+			background-color: var(--bs-dark); 
+			position: relative;
+			overflow: hidden; 
+		}
+		.circle{
+			height: 200px;
+			width: 200px;
+			border-radius: 50%;
+			position: fixed;
+			z-index: -1;
+			display: inline-block;
+			background-color: red;
+		}  
+		ul{
+			margin: 0px 0px;
+		}
+		div.invalid-feedback{
+			margin: 0px 0px;
+		}
+	</style>
+
+	<span class="circle bg-warning" style="top: -5vw; left: -8vw; height: 30vw; width: 30vw;"></span>
+	<span class="circle bg-danger" style="bottom: -10vw; right: -18vw; height: 35vw; width: 35vw;"></span>
+
+	<div class="d-flex flex-grow-1 flex-column bg-transparent justify-content-center align-items-center" style="min-height: 100vh; position: relative;">
+		<img id="logo" class="animate__animated animate__fadeInDown animate__fast" src="{% static "/img/automoss.svg" %}" height=60>
+		{% block "login-content" %}{% endblock %}
+	</div>
+
+	<script>
+		let logo = document.getElementById("logo");
+		function goTo(url){
+			// Fade the logo and form out.
+			logo.classList.add("animate__fadeOutUp");	
+			document.getElementsByTagName("form")[0].classList.add("animate__fadeOutDown");
+
+			// Load the new page.
+			setTimeout(() => {
+				location.href = url;
+			}, 300);
+		}
+	</script>
+
+{% endblock %}

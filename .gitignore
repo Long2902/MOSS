@@ -1,0 +1,28 @@
+# Django
+__pycache__
+db.sqlite3
+
+# VS Code
+.vscode/*
+
+# Dot-env
+automoss/.env
+
+# Migrations
+migrations/
+
+# Media
+media/
+
+# Redis
+dump.rdb
+
+# Coverage/testing
+.coverage
+htmlcov/
+
+# Log files
+*.log
+
+# Env files
+.env
